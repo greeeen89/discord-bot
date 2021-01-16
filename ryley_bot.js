@@ -1,6 +1,7 @@
 // here is a file
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const config = require('./config.json');
 
 var yesNoQuestionWords = ["are", "is", "does", "have", "can", "am", "was",
                           "were", "has", "do", "did", "could*", "should", "may",
@@ -14,7 +15,7 @@ var yesNoAnswers = ["Better not tell you.", "Most likely.", "Very doubtful.",
 // bot startup
 client.on('ready', () => {
   console.log("Connectd as: " + client.user.tag);
-})
+
 
 // respond to messages
 client.on('message', (receivedMessage) => {
@@ -39,8 +40,7 @@ client.on('message', (receivedMessage) => {
   }
 })
 
-bot_secret_token = "NTk0NzY5NjAwMzg2OTU3MzE0.XRhRXw.MKTYi_H5TzieyHWcfMuNsCECt0Y";
-client.login(bot_secret_token);
+client.login(config.secret);
 
 function getRandInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
